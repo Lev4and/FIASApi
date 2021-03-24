@@ -24,7 +24,14 @@ namespace FIASApi.Api
         {
             Configuration.Bind("ConfigDb", new ConfigDb());
 
-            services.AddTransient<IAddrobRepository, EFAddrobRepository>();
+            services.AddTransient<IAreasRepository, EFAreasRepository>();
+            services.AddTransient<ICitiesRepository, EFCitiesRepository>();
+            services.AddTransient<IFlatsRepository, EFFlatsRepository>();
+            services.AddTransient<IHousesRepository, EFHousesRepository>();
+            services.AddTransient<IOfficesRepository, EFOfficesRepository>();
+            services.AddTransient<IPlacesRepository, EFPlacesRepository>();
+            services.AddTransient<IRegionsRepository, EFRegionsRepository>();
+            services.AddTransient<IStreetsRepository, EFStreetsRepository>();
             services.AddTransient<DataManager>();
 
             services.AddDbContext<FIASContext>((options) =>
@@ -32,7 +39,14 @@ namespace FIASApi.Api
                 options.UseSqlServer(ConfigDb.ConnectionStringDb);
             });
 
-            services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader());
+            });
+            services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

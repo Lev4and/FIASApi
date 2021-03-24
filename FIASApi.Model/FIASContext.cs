@@ -33,6 +33,9 @@ namespace FIASApi.Model
         public virtual DbSet<Strstat> Strstats { get; set; }
         public virtual DbSet<VArea> VAreas { get; set; }
         public virtual DbSet<VCity> VCities { get; set; }
+        public virtual DbSet<VFlat> VFlats { get; set; }
+        public virtual DbSet<VHouse> VHouses { get; set; }
+        public virtual DbSet<VOffice> VOffices { get; set; }
         public virtual DbSet<VPlace> VPlaces { get; set; }
         public virtual DbSet<VRegion> VRegions { get; set; }
         public virtual DbSet<VStreet> VStreets { get; set; }
@@ -659,6 +662,14 @@ namespace FIASApi.Model
                     .HasMaxLength(120)
                     .HasColumnName("OFFNAME");
 
+                entity.Property(e => e.Okato)
+                    .HasMaxLength(11)
+                    .HasColumnName("OKATO");
+
+                entity.Property(e => e.Oktmo)
+                    .HasMaxLength(11)
+                    .HasColumnName("OKTMO");
+
                 entity.Property(e => e.Regioncode)
                     .HasMaxLength(2)
                     .HasColumnName("REGIONCODE");
@@ -702,6 +713,14 @@ namespace FIASApi.Model
                     .HasMaxLength(120)
                     .HasColumnName("OFFNAME");
 
+                entity.Property(e => e.Okato)
+                    .HasMaxLength(11)
+                    .HasColumnName("OKATO");
+
+                entity.Property(e => e.Oktmo)
+                    .HasMaxLength(11)
+                    .HasColumnName("OKTMO");
+
                 entity.Property(e => e.Regioncode)
                     .HasMaxLength(2)
                     .HasColumnName("REGIONCODE");
@@ -713,6 +732,273 @@ namespace FIASApi.Model
                 entity.Property(e => e.Shortname)
                     .HasMaxLength(10)
                     .HasColumnName("SHORTNAME");
+            });
+
+            modelBuilder.Entity<VFlat>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("v_flat");
+
+                entity.Property(e => e.Areacode)
+                    .HasMaxLength(3)
+                    .HasColumnName("AREACODE");
+
+                entity.Property(e => e.Areaname)
+                    .HasMaxLength(131)
+                    .HasColumnName("AREANAME");
+
+                entity.Property(e => e.Buildnum)
+                    .HasMaxLength(50)
+                    .HasColumnName("BUILDNUM");
+
+                entity.Property(e => e.Citycode)
+                    .HasMaxLength(3)
+                    .HasColumnName("CITYCODE");
+
+                entity.Property(e => e.Cityname)
+                    .HasMaxLength(131)
+                    .HasColumnName("CITYNAME");
+
+                entity.Property(e => e.Flatnumber)
+                    .HasMaxLength(50)
+                    .HasColumnName("FLATNUMBER");
+
+                entity.Property(e => e.Flattypename)
+                    .HasMaxLength(50)
+                    .HasColumnName("FLATTYPENAME");
+
+                entity.Property(e => e.Flattypeshortname)
+                    .HasMaxLength(50)
+                    .HasColumnName("FLATTYPESHORTNAME");
+
+                entity.Property(e => e.Fltypeid).HasColumnName("FLTYPEID");
+
+                entity.Property(e => e.Houseguid)
+                    .HasMaxLength(36)
+                    .HasColumnName("HOUSEGUID");
+
+                entity.Property(e => e.Houseid)
+                    .HasMaxLength(36)
+                    .HasColumnName("HOUSEID");
+
+                entity.Property(e => e.Housenum)
+                    .HasMaxLength(20)
+                    .HasColumnName("HOUSENUM");
+
+                entity.Property(e => e.Placecode)
+                    .HasMaxLength(3)
+                    .HasColumnName("PLACECODE");
+
+                entity.Property(e => e.Placename)
+                    .HasMaxLength(131)
+                    .HasColumnName("PLACENAME");
+
+                entity.Property(e => e.Postalcode)
+                    .HasMaxLength(6)
+                    .HasColumnName("POSTALCODE");
+
+                entity.Property(e => e.Regioncode)
+                    .HasMaxLength(2)
+                    .HasColumnName("REGIONCODE");
+
+                entity.Property(e => e.Regionname)
+                    .HasMaxLength(120)
+                    .HasColumnName("REGIONNAME");
+
+                entity.Property(e => e.Roomguid)
+                    .HasMaxLength(36)
+                    .HasColumnName("ROOMGUID");
+
+                entity.Property(e => e.Roomid)
+                    .HasMaxLength(36)
+                    .HasColumnName("ROOMID");
+
+                entity.Property(e => e.Statstatus).HasColumnName("STATSTATUS");
+
+                entity.Property(e => e.Streetcode)
+                    .HasMaxLength(4)
+                    .HasColumnName("STREETCODE");
+
+                entity.Property(e => e.Streetname)
+                    .HasMaxLength(131)
+                    .HasColumnName("STREETNAME");
+
+                entity.Property(e => e.Strucnum)
+                    .HasMaxLength(50)
+                    .HasColumnName("STRUCNUM");
+            });
+
+            modelBuilder.Entity<VHouse>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("v_house");
+
+                entity.Property(e => e.Aoguid)
+                    .HasMaxLength(36)
+                    .HasColumnName("AOGUID");
+
+                entity.Property(e => e.Areacode)
+                    .HasMaxLength(3)
+                    .HasColumnName("AREACODE");
+
+                entity.Property(e => e.Areaname)
+                    .HasMaxLength(131)
+                    .HasColumnName("AREANAME");
+
+                entity.Property(e => e.Buildnum)
+                    .HasMaxLength(50)
+                    .HasColumnName("BUILDNUM");
+
+                entity.Property(e => e.Citycode)
+                    .HasMaxLength(3)
+                    .HasColumnName("CITYCODE");
+
+                entity.Property(e => e.Cityname)
+                    .HasMaxLength(131)
+                    .HasColumnName("CITYNAME");
+
+                entity.Property(e => e.Houseguid)
+                    .HasMaxLength(36)
+                    .HasColumnName("HOUSEGUID");
+
+                entity.Property(e => e.Houseid)
+                    .HasMaxLength(36)
+                    .HasColumnName("HOUSEID");
+
+                entity.Property(e => e.Housenum)
+                    .HasMaxLength(20)
+                    .HasColumnName("HOUSENUM");
+
+                entity.Property(e => e.Placecode)
+                    .HasMaxLength(3)
+                    .HasColumnName("PLACECODE");
+
+                entity.Property(e => e.Placename)
+                    .HasMaxLength(131)
+                    .HasColumnName("PLACENAME");
+
+                entity.Property(e => e.Postalcode)
+                    .HasMaxLength(6)
+                    .HasColumnName("POSTALCODE");
+
+                entity.Property(e => e.Regioncode)
+                    .HasMaxLength(2)
+                    .HasColumnName("REGIONCODE");
+
+                entity.Property(e => e.Regionname)
+                    .HasMaxLength(120)
+                    .HasColumnName("REGIONNAME");
+
+                entity.Property(e => e.Statstatus).HasColumnName("STATSTATUS");
+
+                entity.Property(e => e.Streetcode)
+                    .HasMaxLength(4)
+                    .HasColumnName("STREETCODE");
+
+                entity.Property(e => e.Streetname)
+                    .HasMaxLength(131)
+                    .HasColumnName("STREETNAME");
+
+                entity.Property(e => e.Strucnum)
+                    .HasMaxLength(50)
+                    .HasColumnName("STRUCNUM");
+            });
+
+            modelBuilder.Entity<VOffice>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("v_office");
+
+                entity.Property(e => e.Areacode)
+                    .HasMaxLength(3)
+                    .HasColumnName("AREACODE");
+
+                entity.Property(e => e.Areaname)
+                    .HasMaxLength(131)
+                    .HasColumnName("AREANAME");
+
+                entity.Property(e => e.Buildnum)
+                    .HasMaxLength(50)
+                    .HasColumnName("BUILDNUM");
+
+                entity.Property(e => e.Citycode)
+                    .HasMaxLength(3)
+                    .HasColumnName("CITYCODE");
+
+                entity.Property(e => e.Cityname)
+                    .HasMaxLength(131)
+                    .HasColumnName("CITYNAME");
+
+                entity.Property(e => e.Flatnumber)
+                    .HasMaxLength(50)
+                    .HasColumnName("FLATNUMBER");
+
+                entity.Property(e => e.Flattypename)
+                    .HasMaxLength(50)
+                    .HasColumnName("FLATTYPENAME");
+
+                entity.Property(e => e.Flattypeshortname)
+                    .HasMaxLength(50)
+                    .HasColumnName("FLATTYPESHORTNAME");
+
+                entity.Property(e => e.Fltypeid).HasColumnName("FLTYPEID");
+
+                entity.Property(e => e.Houseguid)
+                    .HasMaxLength(36)
+                    .HasColumnName("HOUSEGUID");
+
+                entity.Property(e => e.Houseid)
+                    .HasMaxLength(36)
+                    .HasColumnName("HOUSEID");
+
+                entity.Property(e => e.Housenum)
+                    .HasMaxLength(20)
+                    .HasColumnName("HOUSENUM");
+
+                entity.Property(e => e.Placecode)
+                    .HasMaxLength(3)
+                    .HasColumnName("PLACECODE");
+
+                entity.Property(e => e.Placename)
+                    .HasMaxLength(131)
+                    .HasColumnName("PLACENAME");
+
+                entity.Property(e => e.Postalcode)
+                    .HasMaxLength(6)
+                    .HasColumnName("POSTALCODE");
+
+                entity.Property(e => e.Regioncode)
+                    .HasMaxLength(2)
+                    .HasColumnName("REGIONCODE");
+
+                entity.Property(e => e.Regionname)
+                    .HasMaxLength(120)
+                    .HasColumnName("REGIONNAME");
+
+                entity.Property(e => e.Roomguid)
+                    .HasMaxLength(36)
+                    .HasColumnName("ROOMGUID");
+
+                entity.Property(e => e.Roomid)
+                    .HasMaxLength(36)
+                    .HasColumnName("ROOMID");
+
+                entity.Property(e => e.Statstatus).HasColumnName("STATSTATUS");
+
+                entity.Property(e => e.Streetcode)
+                    .HasMaxLength(4)
+                    .HasColumnName("STREETCODE");
+
+                entity.Property(e => e.Streetname)
+                    .HasMaxLength(131)
+                    .HasColumnName("STREETNAME");
+
+                entity.Property(e => e.Strucnum)
+                    .HasMaxLength(50)
+                    .HasColumnName("STRUCNUM");
             });
 
             modelBuilder.Entity<VPlace>(entity =>
@@ -749,6 +1035,14 @@ namespace FIASApi.Model
                     .HasMaxLength(120)
                     .HasColumnName("OFFNAME");
 
+                entity.Property(e => e.Okato)
+                    .HasMaxLength(11)
+                    .HasColumnName("OKATO");
+
+                entity.Property(e => e.Oktmo)
+                    .HasMaxLength(11)
+                    .HasColumnName("OKTMO");
+
                 entity.Property(e => e.Placecode)
                     .HasMaxLength(3)
                     .HasColumnName("PLACECODE");
@@ -784,8 +1078,12 @@ namespace FIASApi.Model
                     .HasMaxLength(120)
                     .HasColumnName("OFFNAME");
 
+                entity.Property(e => e.Okato)
+                    .HasMaxLength(11)
+                    .HasColumnName("OKATO");
+
                 entity.Property(e => e.Regioncode)
-                    .HasMaxLength(2)
+                    .HasMaxLength(11)
                     .HasColumnName("REGIONCODE");
 
                 entity.Property(e => e.Shortname)
@@ -826,6 +1124,14 @@ namespace FIASApi.Model
                 entity.Property(e => e.Offname)
                     .HasMaxLength(120)
                     .HasColumnName("OFFNAME");
+
+                entity.Property(e => e.Okato)
+                    .HasMaxLength(11)
+                    .HasColumnName("OKATO");
+
+                entity.Property(e => e.Oktmo)
+                    .HasMaxLength(11)
+                    .HasColumnName("OKTMO");
 
                 entity.Property(e => e.Placecode)
                     .HasMaxLength(3)

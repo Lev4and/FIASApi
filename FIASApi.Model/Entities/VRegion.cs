@@ -9,6 +9,7 @@ namespace FIASApi.Model.Entities
     {
         public string Aoguid { get; set; }
         public string Code { get; set; }
+        public string Okato { get; set; }
         public string Regioncode { get; set; }
         public string Offname { get; set; }
         public string Shortname { get; set; }
