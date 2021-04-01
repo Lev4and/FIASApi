@@ -39,7 +39,7 @@ namespace FIASApi.Model.Repositories.EntityFramework
             }
         }
 
-        public IQueryable<VStreet> GetStreets(string offname, string regionCode = "", string areaCode = "", string cityCode = "", string placeCode = "", int? limit = null)
+        public IQueryable<VStreet> GetStreets(string offname, string regionCode = "", string regionName = "", string areaCode = "", string areaName = "", string cityCode = "", string cityName = "", string placeCode = "", string placeName = "", int? limit = null)
         {
             #region Проверка аргументов метода
             if (offname == null)
@@ -47,31 +47,55 @@ namespace FIASApi.Model.Repositories.EntityFramework
                 throw new ArgumentNullException("offname", "Параметр не может быть пустым.");
             }
 
-            if(regionCode == null)
+            if (regionCode == null)
             {
                 throw new ArgumentNullException("regionCode", "Параметр не может быть пустым.");
             }
 
-            if(areaCode == null)
+            if (regionName == null)
+            {
+                throw new ArgumentNullException("regionName", "Параметр не может быть пустым.");
+            }
+
+            if (areaCode == null)
             {
                 throw new ArgumentNullException("areaCode", "Параметр не может быть пустым.");
             }
 
-            if(cityCode == null)
+            if (areaName == null)
+            {
+                throw new ArgumentNullException("areaName", "Параметр не может быть пустым.");
+            }
+
+            if (cityCode == null)
             {
                 throw new ArgumentNullException("cityCode", "Параметр не может быть пустым.");
             }
 
-            if(placeCode == null)
+            if (cityName == null)
+            {
+                throw new ArgumentNullException("cityName", "Параметр не может быть пустым.");
+            }
+
+            if (placeCode == null)
             {
                 throw new ArgumentNullException("placeCode", "Параметр не может быть пустым.");
             }
+
+            if (placeName == null)
+            {
+                throw new ArgumentNullException("placeName", "Параметр не может быть пустым.");
+            }
             #endregion
 
-            if(limit != null ? limit > 0 : false)
+            if (limit != null ? limit > 0 : false)
             {
                 return _context.VStreets.Where(s =>
                 EF.Functions.Like(s.Offname, $"%{offname}%") &&
+                (regionName.Length > 0 ? EF.Functions.Like(s.Regionname, $"%{regionName}%") : true) &&
+                (areaName.Length > 0 ? EF.Functions.Like(s.Areaname, $"%{areaName}%") : true) &&
+                (cityName.Length > 0 ? EF.Functions.Like(s.Cityname, $"%{cityName}%") : true) &&
+                (placeName.Length > 0 ? EF.Functions.Like(s.Placename, $"%{placeName}%") : true) &&
                 (regionCode.Length == 2 ? s.Regioncode == regionCode : true) &&
                 (areaCode.Length == 3 ? s.Areacode == areaCode : true) &&
                 (cityCode.Length == 3 ? s.Citycode == cityCode : true) &&
@@ -81,6 +105,10 @@ namespace FIASApi.Model.Repositories.EntityFramework
             {
                 return _context.VStreets.Where(s =>
                 EF.Functions.Like(s.Offname, $"%{offname}%") &&
+                (regionName.Length > 0 ? EF.Functions.Like(s.Regionname, $"%{regionName}%") : true) &&
+                (areaName.Length > 0 ? EF.Functions.Like(s.Areaname, $"%{areaName}%") : true) &&
+                (cityName.Length > 0 ? EF.Functions.Like(s.Cityname, $"%{cityName}%") : true) &&
+                (placeName.Length > 0 ? EF.Functions.Like(s.Placename, $"%{placeName}%") : true) &&
                 (regionCode.Length == 2 ? s.Regioncode == regionCode : true) &&
                 (areaCode.Length == 3 ? s.Areacode == areaCode : true) &&
                 (cityCode.Length == 3 ? s.Citycode == cityCode : true) &&

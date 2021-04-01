@@ -39,7 +39,7 @@ namespace FIASApi.Model.Repositories.EntityFramework
             }
         }
 
-        public IQueryable<VCity> GetCities(string offname, string regionCode = "", string areaCode = "", int? limit = null)
+        public IQueryable<VCity> GetCities(string offname, string regionCode = "", string regionName = "", string areaCode = "", string areaName = "", int? limit = null)
         {
             #region Проверка аргументов метода
             if (offname == null)
@@ -52,9 +52,19 @@ namespace FIASApi.Model.Repositories.EntityFramework
                 throw new ArgumentNullException("regionCode", "Параметр не может быть пустым.");
             }
 
+            if(regionName == null)
+            {
+                throw new ArgumentNullException("regionName", "Параметр не может быть пустым.");
+            }
+
             if(areaCode == null)
             {
                 throw new ArgumentNullException("areaCode", "Параметр не может быть пустым.");
+            }
+
+            if(areaName == null)
+            {
+                throw new ArgumentNullException("areaName", "Параметр не может быть пустым.");
             }
             #endregion
 
@@ -62,6 +72,8 @@ namespace FIASApi.Model.Repositories.EntityFramework
             {
                 return _context.VCities.Where(c =>
                 EF.Functions.Like(c.Offname, $"%{offname}%") &&
+                (regionName.Length > 0 ? EF.Functions.Like(c.Regionname, $"%{regionName}%") : true) &&
+                (areaName.Length > 0 ? EF.Functions.Like(c.Areaname, $"%{areaName}%") : true) &&
                 (regionCode.Length == 2 ? c.Regioncode == regionCode : true) &&
                 (areaCode.Length == 3 ? c.Areacode == areaCode : true)).Take((int)limit).AsNoTracking();
             }
@@ -69,6 +81,8 @@ namespace FIASApi.Model.Repositories.EntityFramework
             {
                 return _context.VCities.Where(c =>
                 EF.Functions.Like(c.Offname, $"%{offname}%") &&
+                (regionName.Length > 0 ? EF.Functions.Like(c.Regionname, $"%{regionName}%") : true) &&
+                (areaName.Length > 0 ? EF.Functions.Like(c.Areaname, $"%{areaName}%") : true) &&
                 (regionCode.Length == 2 ? c.Regioncode == regionCode : true) &&
                 (areaCode.Length == 3 ? c.Areacode == areaCode : true)).AsNoTracking();
             }

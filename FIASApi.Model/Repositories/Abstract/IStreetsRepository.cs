@@ -9,6 +9,6 @@ namespace FIASApi.Model.Repositories.Abstract
 
         IQueryable<VStreet> GetStreets(int? limit = null);
 
-        IQueryable<VStreet> GetStreets(string offname, string regionCode = "", string areaCode = "", string cityCode = "", string placeCode = "", int? limit = null);
+        IQueryable<VStreet> GetStreets(string offname, string regionCode = "", string regionName = "", string areaCode = "", string areaName = "", string cityCode = "", string cityName = "", string placeCode = "", string placeName = "", int? limit = null);
     }
 }

@@ -39,7 +39,7 @@ namespace FIASApi.Model.Repositories.EntityFramework
             }
         }
 
-        public IQueryable<VPlace> GetPlaces(string offname, string regionCode = "", string areaCode = "", string cityCode = "", int? limit = null)
+        public IQueryable<VPlace> GetPlaces(string offname, string regionCode = "", string regionName = "", string areaCode = "", string areaName = "", string cityCode = "", string cityName = "", int? limit = null)
         {
             #region Проверка аргументов метода
             if (offname == null)
@@ -47,19 +47,34 @@ namespace FIASApi.Model.Repositories.EntityFramework
                 throw new ArgumentNullException("offname", "Параметр не может быть пустым.");
             }
 
-            if(regionCode == null)
+            if (regionCode == null)
             {
                 throw new ArgumentNullException("regionCode", "Параметр не может быть пустым.");
             }
 
-            if(areaCode == null)
+            if (regionName == null)
+            {
+                throw new ArgumentNullException("regionName", "Параметр не может быть пустым.");
+            }
+
+            if (areaCode == null)
             {
                 throw new ArgumentNullException("areaCode", "Параметр не может быть пустым.");
+            }
+
+            if (areaName == null)
+            {
+                throw new ArgumentNullException("areaName", "Параметр не может быть пустым.");
             }
 
             if (cityCode == null)
             {
                 throw new ArgumentNullException("cityCode", "Параметр не может быть пустым.");
+            }
+
+            if (cityName == null)
+            {
+                throw new ArgumentNullException("cityName", "Параметр не может быть пустым.");
             }
             #endregion
 
@@ -67,6 +82,9 @@ namespace FIASApi.Model.Repositories.EntityFramework
             {
                 return _context.VPlaces.Where(p =>
                 EF.Functions.Like(p.Offname, $"%{offname}%") &&
+                (regionName.Length > 0 ? EF.Functions.Like(p.Regionname, $"%{regionName}%") : true) &&
+                (areaName.Length > 0 ? EF.Functions.Like(p.Areaname, $"%{areaName}%") : true) &&
+                (cityCode.Length > 0 ? EF.Functions.Like(p.Cityname, $"%{cityCode}%") : true) &&
                 (regionCode.Length == 2 ? p.Regioncode == regionCode : true) &&
                 (areaCode.Length == 3 ? p.Areacode == areaCode : true) &&
                 (cityCode.Length == 3 ? p.Citycode == cityCode : true)).Take((int)limit).AsNoTracking();
@@ -75,6 +93,9 @@ namespace FIASApi.Model.Repositories.EntityFramework
             {
                 return _context.VPlaces.Where(p =>
                 EF.Functions.Like(p.Offname, $"%{offname}%") &&
+                (regionName.Length > 0 ? EF.Functions.Like(p.Regionname, $"%{regionName}%") : true) &&
+                (areaName.Length > 0 ? EF.Functions.Like(p.Areaname, $"%{areaName}%") : true) &&
+                (cityCode.Length > 0 ? EF.Functions.Like(p.Cityname, $"%{cityCode}%") : true) &&
                 (regionCode.Length == 2 ? p.Regioncode == regionCode : true) &&
                 (areaCode.Length == 3 ? p.Areacode == areaCode : true) &&
                 (cityCode.Length == 3 ? p.Citycode == cityCode : true)).AsNoTracking();

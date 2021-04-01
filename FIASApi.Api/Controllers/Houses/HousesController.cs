@@ -46,11 +46,11 @@ namespace FIASApi.Api.Controllers.Houses
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> GetHouses(string housenum = "", string buildnum = "", string strucnum = "", string postalcode = "", string regionCode = "", string areaCode = "", string cityCode = "", string placeCode = "", string streetCode = "", int? limit = null)
+        public async Task<IActionResult> GetHouses(string housenum = "", string buildnum = "", string strucnum = "", string postalcode = "", string regionCode = "", string regionName = "", string areaCode = "", string areaName = "", string cityCode = "", string cityName = "", string placeCode = "", string placeName = "", string streetCode = "", string streetName = "", int? limit = null)
         {
             try
             {
-                return Ok(await Task.Run<List<VHouse>>(() => { return _dataManager.Houses.GetHouses(housenum, buildnum, strucnum, postalcode, regionCode, areaCode, cityCode, placeCode, streetCode, limit).ToList(); }));
+                return Ok(await Task.Run<List<VHouse>>(() => { return _dataManager.Houses.GetHouses(housenum, buildnum, strucnum, postalcode, regionCode, regionName, areaCode, areaName, cityCode, cityName, placeCode, placeName, streetCode, streetName, limit).ToList(); }));
             }
             catch
             {

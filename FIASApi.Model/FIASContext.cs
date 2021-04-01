@@ -678,9 +678,17 @@ namespace FIASApi.Model
                     .HasMaxLength(120)
                     .HasColumnName("REGIONNAME");
 
+                entity.Property(e => e.Scname)
+                    .HasMaxLength(10)
+                    .HasColumnName("SCNAME");
+
                 entity.Property(e => e.Shortname)
                     .HasMaxLength(10)
                     .HasColumnName("SHORTNAME");
+
+                entity.Property(e => e.Socrname)
+                    .HasMaxLength(50)
+                    .HasColumnName("SOCRNAME");
             });
 
             modelBuilder.Entity<VCity>(entity =>
@@ -729,9 +737,17 @@ namespace FIASApi.Model
                     .HasMaxLength(120)
                     .HasColumnName("REGIONNAME");
 
+                entity.Property(e => e.Scname)
+                    .HasMaxLength(10)
+                    .HasColumnName("SCNAME");
+
                 entity.Property(e => e.Shortname)
                     .HasMaxLength(10)
                     .HasColumnName("SHORTNAME");
+
+                entity.Property(e => e.Socrname)
+                    .HasMaxLength(50)
+                    .HasColumnName("SOCRNAME");
             });
 
             modelBuilder.Entity<VFlat>(entity =>
@@ -1055,9 +1071,17 @@ namespace FIASApi.Model
                     .HasMaxLength(120)
                     .HasColumnName("REGIONNAME");
 
+                entity.Property(e => e.Scname)
+                    .HasMaxLength(10)
+                    .HasColumnName("SCNAME");
+
                 entity.Property(e => e.Shortname)
                     .HasMaxLength(10)
                     .HasColumnName("SHORTNAME");
+
+                entity.Property(e => e.Socrname)
+                    .HasMaxLength(50)
+                    .HasColumnName("SOCRNAME");
             });
 
             modelBuilder.Entity<VRegion>(entity =>
@@ -1082,13 +1106,25 @@ namespace FIASApi.Model
                     .HasMaxLength(11)
                     .HasColumnName("OKATO");
 
-                entity.Property(e => e.Regioncode)
+                entity.Property(e => e.Oktmo)
                     .HasMaxLength(11)
+                    .HasColumnName("OKTMO");
+
+                entity.Property(e => e.Regioncode)
+                    .HasMaxLength(2)
                     .HasColumnName("REGIONCODE");
+
+                entity.Property(e => e.Scname)
+                    .HasMaxLength(10)
+                    .HasColumnName("SCNAME");
 
                 entity.Property(e => e.Shortname)
                     .HasMaxLength(10)
                     .HasColumnName("SHORTNAME");
+
+                entity.Property(e => e.Socrname)
+                    .HasMaxLength(50)
+                    .HasColumnName("SOCRNAME");
             });
 
             modelBuilder.Entity<VStreet>(entity =>
@@ -1149,9 +1185,17 @@ namespace FIASApi.Model
                     .HasMaxLength(120)
                     .HasColumnName("REGIONNAME");
 
+                entity.Property(e => e.Scname)
+                    .HasMaxLength(10)
+                    .HasColumnName("SCNAME");
+
                 entity.Property(e => e.Shortname)
                     .HasMaxLength(10)
                     .HasColumnName("SHORTNAME");
+
+                entity.Property(e => e.Socrname)
+                    .HasMaxLength(50)
+                    .HasColumnName("SOCRNAME");
 
                 entity.Property(e => e.Streetcode)
                     .HasMaxLength(4)

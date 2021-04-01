@@ -9,6 +9,6 @@ namespace FIASApi.Model.Repositories.Abstract
 
         IQueryable<VCity> GetCities(int? limit = null);
 
-        IQueryable<VCity> GetCities(string offname, string regionCode = "", string areaCode = "", int? limit = null);
+        IQueryable<VCity> GetCities(string offname, string regionCode = "", string regionName = "", string areaCode = "", string areaName = "", int? limit = null);
     }
 }

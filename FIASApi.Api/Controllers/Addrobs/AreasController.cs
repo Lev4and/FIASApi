@@ -46,11 +46,11 @@ namespace FIASApi.Api.Controllers.Addrobs
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> GetAreas(string offname, string regionCode = "", int? limit = null)
+        public async Task<IActionResult> GetAreas(string offname, string regionCode = "", string regionName = "", int? limit = null)
         {
             try
             {
-                return Ok(await Task.Run<List<VArea>>(() => { return _dataManager.Areas.GetAreas(offname, regionCode, limit).ToList(); }));
+                return Ok(await Task.Run<List<VArea>>(() => { return _dataManager.Areas.GetAreas(offname, regionCode, regionName, limit).ToList(); }));
             }
             catch
             {

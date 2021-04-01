@@ -9,6 +9,6 @@ namespace FIASApi.Model.Repositories.Abstract
 
         IQueryable<VPlace> GetPlaces(int? limit = null);
 
-        IQueryable<VPlace> GetPlaces(string offname, string regionCode = "", string areaCode = "", string cityCode = "", int? limit = null);
+        IQueryable<VPlace> GetPlaces(string offname, string regionCode = "", string regionName = "", string areaCode = "", string areaName = "", string cityCode = "", string cityName = "", int? limit = null);
     }
 }

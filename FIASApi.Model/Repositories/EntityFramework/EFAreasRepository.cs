@@ -39,7 +39,7 @@ namespace FIASApi.Model.Repositories.EntityFramework
             }
         }
 
-        public IQueryable<VArea> GetAreas(string offname, string regionCode = "", int? limit = null)
+        public IQueryable<VArea> GetAreas(string offname, string regionCode = "", string regionName = "", int? limit = null)
         {
             #region Проверка аргументов метода
             if (offname == null)
@@ -51,18 +51,25 @@ namespace FIASApi.Model.Repositories.EntityFramework
             {
                 throw new ArgumentNullException("regionCode", "Параметр не может быть пустым.");
             }
+
+            if(regionName == null)
+            {
+                throw new ArgumentNullException("regionName", "Параметр не может быть пустым.");
+            }
             #endregion
 
             if(limit != null ? limit > 0 : false)
             {
                 return _context.VAreas.Where(a =>
                 EF.Functions.Like(a.Offname, $"%{offname}%") &&
+                (regionName.Length > 0 ? EF.Functions.Like(a.Regionname, $"%{regionName}%") : true) &&
                 (regionCode.Length == 2 ? a.Regioncode == regionCode : true)).Take((int)limit).AsNoTracking();
             }
             else
             {
                 return _context.VAreas.Where(a =>
                 EF.Functions.Like(a.Offname, $"%{offname}%") &&
+                (regionName.Length > 0 ? EF.Functions.Like(a.Regionname, $"%{regionName}%") : true) &&
                 (regionCode.Length == 2 ? a.Regioncode == regionCode : true)).AsNoTracking();
             }
         }

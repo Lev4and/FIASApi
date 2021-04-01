@@ -62,7 +62,7 @@ namespace FIASApi.Model.Tests.Repositories.EntityFramework
         {
             var result = await Task.Run<List<VArea>>(() =>
             {
-                return _dataManager.Areas.GetAreas("Ка", "74", 100).ToList();
+                return _dataManager.Areas.GetAreas("Ка", "74", limit: 100).ToList();
             });
 
             result.Should().BeOfType(typeof(List<VArea>));
@@ -75,7 +75,7 @@ namespace FIASApi.Model.Tests.Repositories.EntityFramework
         {
             var result = await Task.Run<List<VArea>>(() =>
             {
-                return _dataManager.Areas.GetAreas("Ка", "75", 100).ToList();
+                return _dataManager.Areas.GetAreas("Ка", "75", limit: 100).ToList();
             });
 
             result.Should().BeOfType(typeof(List<VArea>));

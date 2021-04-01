@@ -9,6 +9,6 @@ namespace FIASApi.Model.Repositories.Abstract
 
         IQueryable<VArea> GetAreas(int? limit = null);
 
-        IQueryable<VArea> GetAreas(string offname, string regionCode = "", int? limit = null);
+        IQueryable<VArea> GetAreas(string offname, string regionCode = "", string regionName = "", int? limit = null);
     }
 }

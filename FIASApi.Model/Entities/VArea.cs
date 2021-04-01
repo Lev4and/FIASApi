@@ -16,5 +16,7 @@ namespace FIASApi.Model.Entities
         public string Areacode { get; set; }
         public string Offname { get; set; }
         public string Shortname { get; set; }
+        public string Socrname { get; set; }
+        public string Scname { get; set; }
     }
 }

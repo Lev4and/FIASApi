@@ -46,11 +46,11 @@ namespace FIASApi.Api.Controllers.Addrobs
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> GetStreets(string offname, string regionCode = "", string areaCode = "", string cityCode = "", string placeCode = "", int? limit = null)
+        public async Task<IActionResult> GetStreets(string offname, string regionCode = "",  string regionName = "", string areaCode = "", string areaName = "", string cityCode = "", string cityName = "", string placeCode = "", string placeName = "", int? limit = null)
         {
             try
             {
-                return Ok(await Task.Run<List<VStreet>>(() => { return _dataManager.Streets.GetStreets(offname, regionCode, areaCode, cityCode, placeCode, limit).ToList(); }));
+                return Ok(await Task.Run<List<VStreet>>(() => { return _dataManager.Streets.GetStreets(offname, regionCode, regionName, areaCode, areaName, cityCode, cityName, placeCode, placeName, limit).ToList(); }));
             }
             catch
             {
