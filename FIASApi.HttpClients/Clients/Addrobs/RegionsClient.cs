@@ -3,14 +3,14 @@ using System.Threading.Tasks;
 
 namespace FIASApi.HttpClients.Clients.Addrobs
 {
-    public class RegionsClients : BaseHttpClient
+    public class RegionsClient : BaseHttpClient
     {
-        public RegionsClients() : base("addrobs/regions")
+        public RegionsClient() : base("addrobs/regions")
         {
 
         }
 
-        public RegionsClients(HttpClient client) : base(client, "addrobs/regions")
+        public RegionsClient(HttpClient client) : base(client, "addrobs/regions")
         {
 
         }

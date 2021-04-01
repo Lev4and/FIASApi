@@ -11,11 +11,11 @@ namespace FIASApi.HttpClients.Tests.Clients.Addrobs
 {
     public class RegionsClientTests : IntegrationTest
     {
-        private readonly RegionsClients _regionsClients;
+        private readonly RegionsClient _regionsClients;
 
         public RegionsClientTests()
         {
-            _regionsClients = new RegionsClients(_client);
+            _regionsClients = new RegionsClient(_client);
         }
 
         [Fact]
