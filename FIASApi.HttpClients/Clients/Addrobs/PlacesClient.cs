@@ -19,50 +19,29 @@ namespace FIASApi.HttpClients.Clients.Addrobs
 
         public async Task<HttpResponseMessage> GetPlace(string aoguid)
         {
-            try
-            {
-                return await _client.GetAsync($"place/?aoguid={aoguid}");
-            }
-            catch
-            {
-                return null;
-            }
+            return await _client.GetAsync($"place/?aoguid={aoguid}");
         }
 
         public async Task<HttpResponseMessage> GetPlaces(int? limit = null)
         {
-            try
-            {
-                return await _client.GetAsync($"all/?limit={limit}");
-            }
-            catch
-            {
-                return null;
-            }
+            return await _client.GetAsync($"all/?limit={limit}");
         }
 
         public async Task<HttpResponseMessage> GetPlaces(string offname, string regionCode = "", string regionName = "", string areaCode = "", string areaName = "", string cityCode = "", string cityName = "", int? limit = null)
         {
-            try
-            {
-                var parametersUrl = UrlBuilder.GetUrlWithParamsForHttpRequest(new Dictionary<string, string>() 
-                { 
-                    { "offname", offname }, 
+            var parametersUrl = UrlBuilder.GetUrlWithParamsForHttpRequest(new Dictionary<string, string>()
+                {
+                    { "offname", offname },
                     { "regionCode", regionCode },
                     { "regionName", regionName },
                     { "areaCode", areaCode },
                     { "areaName", areaName },
                     { "cityCode", cityCode },
                     { "cityName", cityName },
-                    { "limit", $"{limit}" } 
+                    { "limit", $"{limit}" }
                 });
 
-                return await _client.GetAsync($"search/{parametersUrl}");
-            }
-            catch
-            {
-                return null;
-            }
+            return await _client.GetAsync($"search/{parametersUrl}");
         }
     }
 }

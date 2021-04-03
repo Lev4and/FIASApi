@@ -19,38 +19,22 @@ namespace FIASApi.HttpClients.Clients.Houses
 
         public async Task<HttpResponseMessage> GetHouse(string houseguid)
         {
-            try
-            {
-                return await _client.GetAsync($"house/?houseguid={houseguid}");
-            }
-            catch
-            {
-                return null;
-            }
+            return await _client.GetAsync($"house/?houseguid={houseguid}");
         }
 
         public async Task<HttpResponseMessage> GetHouses(int? limit = null)
         {
-            try
-            {
-                return await _client.GetAsync($"all/?limit={limit}");
-            }
-            catch
-            {
-                return null;
-            }
+            return await _client.GetAsync($"all/?limit={limit}");
         }
 
         public async Task<HttpResponseMessage> GetHouses(string housenum = "", string buildnum = "", string strucnum = "", string postalcode = "", string regionCode = "", string regionName = "", string areaCode = "", string areaName = "", string cityCode = "", string cityName = "", string placeCode = "", string placeName = "", string streetCode = "", string streetName = "", int? limit = null)
         {
-            try
-            {
-                var parametersUrl = UrlBuilder.GetUrlWithParamsForHttpRequest(new Dictionary<string, string>() 
-                { 
-                    { "housenum", housenum }, 
-                    { "buildnum", buildnum }, 
-                    { "strucnum", strucnum }, 
-                    { "postalcode", postalcode }, 
+            var parametersUrl = UrlBuilder.GetUrlWithParamsForHttpRequest(new Dictionary<string, string>()
+                {
+                    { "housenum", housenum },
+                    { "buildnum", buildnum },
+                    { "strucnum", strucnum },
+                    { "postalcode", postalcode },
                     { "regionCode", regionCode },
                     { "regionName", regionName },
                     { "areaCode", areaCode },
@@ -61,15 +45,10 @@ namespace FIASApi.HttpClients.Clients.Houses
                     { "placeName", placeName },
                     { "streetCode", streetCode },
                     { "streetName", streetName },
-                    { "limit", $"{limit}" } 
+                    { "limit", $"{limit}" }
                 });
 
-                return await _client.GetAsync($"search/{parametersUrl}");
-            }
-            catch
-            {
-                return null;
-            }
+            return await _client.GetAsync($"search/{parametersUrl}");
         }
     }
 }

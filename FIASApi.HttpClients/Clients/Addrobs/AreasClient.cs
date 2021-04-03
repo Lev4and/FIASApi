@@ -19,46 +19,25 @@ namespace FIASApi.HttpClients.Clients.Addrobs
 
         public async Task<HttpResponseMessage> GetArea(string aoguid)
         {
-            try
-            {
-                return await _client.GetAsync($"area/?aoguid={aoguid}");
-            }
-            catch
-            {
-                return null;
-            }
+            return await _client.GetAsync($"area/?aoguid={aoguid}");
         }
 
         public async Task<HttpResponseMessage> GetAreas(int? limit = null)
         {
-            try
-            {
-                return await _client.GetAsync($"all/?limit={limit}");
-            }
-            catch
-            {
-                return null;
-            }
+            return await _client.GetAsync($"all/?limit={limit}");
         }
 
         public async Task<HttpResponseMessage> GetAreas(string offname, string regionCode = "", string regionName = "", int? limit = null)
         {
-            try
-            {
-                var parametersUrl = UrlBuilder.GetUrlWithParamsForHttpRequest(new Dictionary<string, string>() 
+            var parametersUrl = UrlBuilder.GetUrlWithParamsForHttpRequest(new Dictionary<string, string>()
                 {
                     { "offname", offname },
                     { "regionCode", regionCode },
                     { "regionName", regionName },
-                    { "limit", $"{limit}" } 
+                    { "limit", $"{limit}" }
                 });
 
-                return await _client.GetAsync($"search/{parametersUrl}");
-            }
-            catch
-            {
-                return null;
-            }
+            return await _client.GetAsync($"search/{parametersUrl}");
         }
     }
 }
