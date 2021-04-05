@@ -15,8 +15,6 @@ namespace FIASApi.HttpClients.Clients
 
         public BaseHttpClient(string urlToController)
         {
-            ConfigHttpClients.UserAgent = "xUnit FIASApi.HttpClients.Tests/1.0 ()";
-
             _baseUrl = ConfigHttpClients.GetAddressServer(urlToController);
 
             _clientHandler = new HttpClientHandler();
